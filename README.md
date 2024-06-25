@@ -19,7 +19,9 @@ roslaunch k4a_hand_to_eye_calibration ur10e_k4a_calibration.launch
 + 程序运行后，会开启三个界面：
   1. rviz界面，主要显示tf关系，即可视化各个坐标系之间的位置关系(将world更改为base_link才会正常显示)
   2. 位姿选取界面，随机选取位姿并使机械臂移动至给出位姿点处
+  ![alt text](image/3333.png)
   3. 采样界面，通过点击takesample完成采样点采样
+  ![alt text](image/2222.png)
 
 + 由于标定程序无法可视化标定状态，因此可以通过rqt工具订阅easy_auro话题进行可视化。
 
@@ -31,6 +33,7 @@ roslaunch k4a_hand_to_eye_calibration ur10e_k4a_calibration.launch
   ```
 
   点击Plugin-->Visualization-->Image View，选择/easy_aruco_node/debug_image的话题进行订阅，即可观察到rgb图像，且能检测识别出charuco码的位置。
+  ![alt text](image/1111.png)
 
 ## 3.开始标定
 
@@ -41,4 +44,5 @@ roslaunch k4a_hand_to_eye_calibration ur10e_k4a_calibration.launch
 3. 规划：检查完成后，点击`Next Pose`按钮，点击`Plan`按钮，若规划可行，点击`Execute`按钮，机器人移动到规划位置。
 4. 采样：机器人移动到规划位置后，在采样界面，点击`Take Sample`按钮。
 5. 重复步骤3，4直到获取17个采样点，即可点击`compute`进行计算，得到最终相机坐标系与机械臂基坐标系之间的转换关系。
-6. 点击`save`按钮，坐标变换信息将会以文件形式保存至~/.ros/easy_handeye处，可通过命令进行查看。
+6. 点击`save`按钮，坐标变换信息将会以文件形式保存至root/.ros/easy_handeye处，可通过cat命令进行查看。
+![alt text](image/4444.png)
